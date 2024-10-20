@@ -4,14 +4,14 @@ config:
   php: '8.3'
   composer_version: '2.8.0'
   via: apache:2.4
-  webroot: .
+  webroot: ./authentication-be/
   database: mariadb:11.3
   cache: none
   xdebug: true
   services:
     appserver:
       build_as_root:
-      - cd ./authentication-be && composer install
+      - composer install
       - mv .env.base .env
       - php artisan key:generate
       - php artisan migrate
